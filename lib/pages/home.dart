@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = [Homee(), Fav(), Search(), Person()];
   int _currentIndex = 0;
 
-  void _onTap(int index) {
+  void onTap(int index) {
     setState(() {
       _currentIndex = index;
     });
@@ -25,15 +25,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.yellow,
+        selectedItemColor: Colors.blue,
+        currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        unselectedItemColor: Colors.blue,
-        selectedItemColor: Colors.yellow,
-        onTap: _onTap,
+        onTap: onTap,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.menu), title: Text("Title")),
-          BottomNavigationBarItem(icon: Icon(Icons.menu), title: Text("Title")),
-          BottomNavigationBarItem(icon: Icon(Icons.menu), title: Text("Title")),
-          BottomNavigationBarItem(icon: Icon(Icons.menu), title: Text("Title")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_balance_wallet), title: Text("Title")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border), title: Text("Title")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search), title: Text("Title")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline), title: Text("Title")),
         ],
       ),
     );
